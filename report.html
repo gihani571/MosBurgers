@@ -1,11 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MOS-BURGERS REPORT</title>
+    <link rel="stylesheet" href="./Styles/main.css" />
+  </head>
+
+  <body onload="loadOrdersToReport()">
+    <div class="section mx-0 px-0 overflow-hidden" id="REPORT">
+      <div class="row">
+        <!-- START-PANE -->
+        <div
+          class="col-sm-1 col-xs-2 bg-black px-0 mx-0 pb-4 overflow-hidden min-vh-100 d-flex flex-column align-items-center"
+        >
+          <div
+            class="mx-auto text-primary fw-bold text-center ps-2 my-5 d-flex flex-column align-items-center"
+            style="max-width: 100%"
+          >
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                M
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                O
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                S
+              </h2>
+            </div>
+            <div class="col" style="height: 25px"></div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                B
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                U
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                R
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                G
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                E
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                R
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                S
+              </h2>
+            </div>
+          </div>
+
+          <div
+            class="container px-0 mx-0 d-flex flex-column align-items-center"
+          >
+            <div class="row-cols-1">
+              <div
+                class="container mb-5 px-1 ms-1"
+                style="max-width: 90px; box-sizing: border-box"
+              >
+                <a href="./update.html"
+                  ><img
+                    src="img/Update.png"
+                    alt=""
+                    style="max-width: 100%"
+                    class="p-2"
+                /></a>
+              </div>
+
+              <div
+                class="container px-1 ms-1"
+                style="max-width: 90px; box-sizing: border-box"
+              >
+                <a href="./index.html"
+                  ><img
+                    src="img/Menu.png"
+                    alt=""
+                    style="max-width: 100%"
+                    class="p-2"
+                /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MIDDLE-PANE -->
+        <div
+          class="col px-0 overflow-hidden pe-3"
+          style="background-image: url(img/blackImg.jpg); overflow: hidden"
+        >
+          <div class="m-4">
+            <div
+              class="container px-auto mt-3 mx-2 mb-3 overflow-hidden"
+              id="searchPane"
+              style="max-width: 100%"
+            >
+              <div class="m-2 bg-black p-3 rounded-3">
+                <div class="d-flex" role="search">
+                  <input
+                    id="orderSearch"
+                    class="form-control rounded-pill"
+                    type="search"
+                    placeholder="Customer Code/Name"
+                    aria-label="Search"
+                  />
+                  <!-- SEARCH-ITEMS -->
+                  <button
+                    class="btn btn-primary mx-2 rounded-4 text-white fw-bold"
+                    type="submit"
+                    onclick="searchOrder()"
+                  >
+                    Search
+                  </button>
+                  <button
+                    class="btn btn-danger rounded-3"
+                    type="submit"
+                    onclick="resetOrderData()"
+                    id="searchBtn"
+                    disabled
+                  >
+                    X
+                  </button>
+                </div>
+              </div>
+              <div
+                class="px-2 mt-5 text-center"
+                style="height: 600px; overflow: scroll"
+              >
+                <table
+                  class="table table-warning table-striped table-bordered align-middle overflow-auto"
+                >
+                  <thead class="fw-bold">
+                    <tr>
+                      <td>OrderID</td>
+                      <td>Customer Details</td>
+                      <td>Items</td>
+                      <td>Items List</td>
+                      <td>Total Discount</td>
+                      <td>Total Amount</td>
+                    </tr>
+                  </thead>
+                  <tbody id="tableData"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/bootstrap.bundle.js"></script>
+    <script src="js/app.js"></script>
+  </body>
 </html>
