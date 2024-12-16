@@ -1,11 +1,596 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MOS-BURGERS MENU</title>
+    <link rel="stylesheet" href="./Styles/main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  </head>
+
+  <body onload="loadItemDataToMenu(); loadCustomerDataToMenu();">
+    <div class="section mx-0 px-0" id="MENU">
+      <div class="row">
+        <!-- START-PANE -->
+        <div
+          class="col-sm-1 col-xs-2 bg-black px-0 mx-0 pb-4 overflow-hidden min-vh-100 d-flex flex-column align-items-center"
+        >
+          <div
+            class="mx-auto text-primary fw-bold text-center ps-2 my-5 d-flex flex-column align-items-center"
+            style="max-width: 100%"
+          >
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                M
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                O
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                S
+              </h2>
+            </div>
+            <div class="col" style="height: 25px"></div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                B
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                U
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                R
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                G
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                E
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                R
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                S
+              </h2>
+            </div>
+          </div>
+
+          <div
+            class="container px-0 mx-0 d-flex flex-column align-items-center"
+          >
+            <div class="row-cols-1">
+              <div
+                class="container mb-5 px-1 ms-1"
+                style="max-width: 90px; box-sizing: border-box"
+              >
+                <a href="./update.html"
+                  ><img
+                    src="img/Update.png"
+                    alt=""
+                    style="max-width: 100%"
+                    class="p-2"
+                /></a>
+              </div>
+
+              <div
+                class="container px-1 ms-1"
+                style="max-width: 90px; box-sizing: border-box"
+              >
+                <a href="./report.html"
+                  ><img
+                    src="img/Report.png"
+                    alt=""
+                    style="max-width: 100%"
+                    class="p-2"
+                /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MIDDLE-PANE -->
+        <div
+          class="col-xxl-8 col-xl-7 col-xlg-7 col-sm-11 col-xs-10 mx-0 px-0 d-flex flex-column align-items-center"
+          id="middlePane"
+          style="background-image: url(img/blackImg.jpg)"
+        >
+          <div
+            class="container px-5 mt-2 mx-0"
+            id="menuPane"
+            style="max-width: 100%"
+          >
+            <div class="m-2 bg-black p-3 rounded-3">
+              <div class="d-flex" role="search">
+                <input
+                  id="itemSearch"
+                  class="form-control me-2 rounded-pill"
+                  type="search"
+                  placeholder="Item Code/Name"
+                  aria-label="Search"
+                />
+                <!-- SEARCH-ITEMS -->
+                <button
+                  class="btn btn-primary rounded-4 text-white fw-bold"
+                  type="submit"
+                  onclick="searchItems()"
+                >
+                  Search
+                </button>
+              </div>
+            </div>
+
+            <!-- SEARCH-DATA -->
+            <div
+              class="container mx-auto"
+              id="searchPanel"
+              style="width: fit-content; display: none"
+            >
+              <div class="row bg-secondary-subtle rounded-2 py-1 pe-3">
+                <div class="col col-xs-5 ms-xs-5 ms-lg-3">
+                  <img
+                    class="img-thumbnail border-0 rounded-3"
+                    src=""
+                    alt=""
+                    width="180px"
+                    id="itemImage"
+                  />
+                </div>
+                <div class="col text-truncate overflow-visible ms-xs-5 ms-lg-3">
+                  <ul class="list-unstyled fw-bold" id="searchDataList">
+                    <li id="category"></li>
+                    <li id="itemCode"></li>
+                    <li id="itemName"></li>
+                    <li id="price"></li>
+                    <li id="discount"></li>
+                    <li id="exp"></li>
+                    <li class="d-lg-flex justify-content-end">
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-danger mt-md-3 rounded-pill"
+                        onclick="resetItemSearch()"
+                        id="closeButton"
+                      >
+                        X
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <ul
+              class="nav nav-pills mb-3 mt-4 mx-lg-2 px-5 py-2 bg-black border border-secondary-subtle"
+              id="pills-tab"
+              role="tablist"
+            >
+              <li class="nav-item mt-1" role="presentation">
+                <button
+                  class="btn btn-sm btn-outline-primary active mx-xxl-3 mx-lg-2 mx-md-1 mx-sm-1 categoryPill"
+                  id="pills-BURGERS-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pills-BURGERS"
+                  type="button"
+                  role="tab"
+                  aria-controls="pills-BURGERS"
+                  aria-selected="true"
+                >
+                  BURGERS
+                </button>
+              </li>
+              <li class="nav-item mt-1" role="presentation">
+                <button
+                  class="btn btn-sm btn-outline-primary mx-xxl-3 mx-lg-2 mx-md-1 mx-sm-1 categoryPill"
+                  id="pills-SUBMARINES-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pills-SUBMARINES"
+                  type="button"
+                  role="tab"
+                  aria-controls="pills-SUBMARINES"
+                  aria-selected="false"
+                >
+                  SUBMARINES
+                </button>
+              </li>
+              <li class="nav-item mt-1" role="presentation">
+                <button
+                  class="btn btn-sm btn-outline-primary mx-xxl-3 mx-lg-2 mx-md-1 mx-sm-1 categoryPill"
+                  id="pills-FRIES-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pills-FRIES"
+                  type="button"
+                  role="tab"
+                  aria-controls="pills-FRIES"
+                  aria-selected="false"
+                >
+                  FRIES
+                </button>
+              </li>
+              <li class="nav-item mt-1" role="presentation">
+                <button
+                  class="btn btn-sm btn-outline-primary mx-xxl-3 mx-lg-2 mx-md-1 mx-sm-1 categoryPill"
+                  id="pills-PASTA-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pills-PASTA"
+                  type="button"
+                  role="tab"
+                  aria-controls="pills-PASTA"
+                  aria-selected="false"
+                >
+                  PASTA
+                </button>
+              </li>
+              <li class="nav-item mt-1" role="presentation">
+                <button
+                  class="btn btn-sm btn-outline-primary mx-xxl-3 mx-lg-2 mx-md-1 mx-sm-1 categoryPill"
+                  id="pills-CHICKEN-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pills-CHICKEN"
+                  type="button"
+                  role="tab"
+                  aria-controls="pills-CHICKEN"
+                  aria-selected="false"
+                >
+                  CHICKEN
+                </button>
+              </li>
+              <li class="nav-item mt-1" role="presentation">
+                <button
+                  class="btn btn-sm btn-outline-primary mx-xxl-3 mx-lg-2 mx-md-1 mx-xs-1 categoryPill"
+                  id="pills-BEVERAGES-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pills-BEVERAGES"
+                  type="button"
+                  role="tab"
+                  aria-controls="pills-BEVERAGES"
+                  aria-selected="false"
+                >
+                  BEVERAGES
+                </button>
+              </li>
+            </ul>
+            <hr />
+
+            <!-- CONTENT-PANE -->
+            <div
+              class="tab-content mx-lg-4 overflow-hidden d-flex flex-column align-items-center"
+              id="pills-tabContent"
+            >
+              <!-- BURGERS-CONTENT -->
+              <div
+                class="tab-pane fade show active"
+                id="pills-BURGERS"
+                role="tabpanel"
+                aria-labelledby="pills-BURGERS-tab"
+                tabindex="0"
+              >
+                <div class="overflow-visible">
+                  <div
+                    class="row row-cols-1 row-cols-lg-3 row-cols-md-2 row-cols-xs-2 gx-3 gy-3 bg-black rounded-4 rounded-4 mt-1 cards"
+                    id="Burgers"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- SUBMARINES-CONTENT -->
+              <div
+                class="tab-pane fade"
+                id="pills-SUBMARINES"
+                role="tabpanel"
+                aria-labelledby="pills-SUBMARINES-tab"
+                tabindex="0"
+              >
+                <div class="overflow-visible">
+                  <div
+                    class="row row-cols-1 row-cols-lg-3 row-cols-md-2 row-cols-xs-2 gx-3 gy-3 bg-black rounded-4 ps-lg-3 pe-lg-3 ms-sm-3 ms-xs-2 pe-sm-2 rounded-4 mt-1 ms-xxl-4 cards"
+                    id="Submarines"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- FRIES-CONTENT -->
+              <div
+                class="tab-pane fade"
+                id="pills-FRIES"
+                role="tabpanel"
+                aria-labelledby="pills-FRIES-tab"
+                tabindex="0"
+              >
+                <div class="overflow-visible">
+                  <div
+                    class="row row-cols-1 row-cols-lg-3 row-cols-md-2 row-cols-xs-2 gx-3 gy-3 bg-black rounded-4 ps-lg-4 pe-lg-4 ms-sm-4 ms-xs-2 pe-sm-2 rounded-4 mt-1 ms-xxl-4 cards"
+                    id="Fries"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- PASTA-CONTENT -->
+              <div
+                class="tab-pane fade"
+                id="pills-PASTA"
+                role="tabpanel"
+                aria-labelledby="pills-PASTA-tab"
+                tabindex="0"
+              >
+                <div class="overflow-visible">
+                  <div
+                    class="row row-cols-1 row-cols-lg-3 row-cols-md-2 row-cols-xs-2 gx-3 gy-3 bg-black rounded-4 ps-lg-4 pe-lg-4 ms-sm-4 ms-xs-2 pe-sm-2 rounded-4 mt-1 ms-xxl-4 cards"
+                    id="Pasta"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- CHICKEN-CONTENT -->
+              <div
+                class="tab-pane fade"
+                id="pills-CHICKEN"
+                role="tabpanel"
+                aria-labelledby="pills-CHICKEN-tab"
+                tabindex="0"
+              >
+                <div class="overflow-visible">
+                  <div
+                    class="row row-cols-1 row-cols-lg-3 row-cols-md-2 row-cols-xs-2 gx-3 gy-3 bg-black rounded-4 ps-lg-4 pe-lg-4 ms-sm-4 ms-xs-2 pe-sm-2 rounded-4 mt-1 ms-xxl-4 cards"
+                    id="Chicken"
+                  ></div>
+                </div>
+              </div>
+
+              <!-- BEVERAGES-CONTENT -->
+              <div
+                class="tab-pane fade"
+                id="pills-BEVERAGES"
+                role="tabpanel"
+                aria-labelledby="pills-BEVERAGES-tab"
+                tabindex="0"
+              >
+                <div class="overflow-visible">
+                  <div
+                    class="row row-cols-1 row-cols-lg-3 row-cols-md-2 row-cols-xs-2 gx-3 gy-3 bg-black rounded-4 ps-lg-4 pe-lg-4 ms-sm-4 ms-xs-2 pe-sm-2 rounded-4 mt-1 ms-xxl-4 cards"
+                    id="Beverages"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- END-PANE -->
+        <div
+        class="col px-0 mx-0 d-flex flex-column align-items-center"
+        style="background-image: url('img/byegerBg.jpg'); 
+               background-size: cover; 
+               background-repeat: no-repeat; 
+               background-position: center; 
+               width: 100%; 
+               height: 120vh;"
+      >
+      
+          <div
+            class="container bg-white mt-3 mb-3 mx-3 px-0 rounded-3 border border-orange200"
+            style="height: 540px; width: 85%"
+            id="endPane"
+          >
+            <div class="row d-flex justify-content-evenly">
+              <div class="col pe-0">
+                <center>
+                  <div class="row">
+                    <h1
+                      class="mx-xl-4 mx-xlg-3 mx-xs-2 text-secondary fw-semibold text-truncate mt-1 ms-1"
+                      style="font-family: 'Courier New', Courier, monospace"
+                    >
+                  Receipt
+                    </h1>
+                  </div>
+                  <div class="row" id="customerNameParent"></div>
+                </center>
+              </div>
+
+              <div class="col mt-1 px-4" style="max-width: 100%">
+                <div class="dropdown">
+                  <button
+                    class="btn-sm btn btn-outline-orange400 dropdown-toggle mx-0 my-2"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    CUSTOMER
+                  </button>
+                  <ul class="dropdown-menu px-1" id="customerDropdown"></ul>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="row mx-2 my-3">
+              <ul
+                class="list-unstyled px-xlg-2 overflow-scroll"
+                id="ordersPane"
+              ></ul>
+            </div>
+          </div>
+
+          <div
+            class="container bg-white mb-3 rounded-3 border border-orange200"
+            style="width: fit-content; overflow-x: hidden; overflow-y: scroll"
+            id="endPane"
+          >
+            <div class="row overflow-hidden">
+              <div class="col pe-0">
+                <h5 class="mt-3 mx-3">
+                  TOTAL COST : <span id="totalCost" class="fw-bold"></span>
+                </h5>
+
+                <h5 class="mt-3 mx-3">
+                  DISCOUNT :
+                  <span id="totalDiscount" class="fw-bold text-danger"></span>
+                </h5>
+
+                <h5 class="mt-3 mx-3 mb-3">
+                  FINAL AMOUNT :
+                  <span id="finalAmount" class="fw-bolder"></span>
+                </h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="container mx-auto text-center">
+            <button
+              type="button"
+              class="btn btn-danger text-light fw-bold btn-lg px-5 mt-1 rounded-pill"
+              onclick="orderConfirmationWindowOpen()"
+              id="checkoutBtn"
+              disabled
+            >
+              CHECKOUT
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="orderConfirmation-container">
+      <section class="orderConfirmation">
+        <div class="orderConfirmation-content">
+          <h4
+            style="
+              font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+                sans-serif;
+              text-align: center;
+            "
+          >
+            Confirm the Payment of
+            <span class="text-danger fw-bold" id="confirmTotalAmount"></span> ?
+          </h4>
+
+          <div class="text-center mt-4 mx-auto">
+            <button
+              type="button"
+              class="btn text-white btn-orangeDanger fw-bold rounded-pill px-5 py-2 mx-2"
+              onclick="orderConfirmed()"
+            >
+              YES
+            </button>
+            <button
+              type="button"
+              class="btn cancel-btn rounded-pill px-5 py-2 mx-2"
+              onclick="orderConfirmationWindowClose()"
+            >
+              NO
+            </button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <div
+      class="toast align-items-center text-bg-success border-0"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      style="position: absolute; top: 1%; left: 50%; transform: translate(-50%)"
+      id="toastOrderCompletion"
+    >
+      <div class="d-flex align-items-center">
+        <div class="toast-body mx-auto text-white h5 my-1">
+          Order Completed Successfully.
+        </div>
+        <button
+          type="button"
+          class="btn-close btn-close-white me-2 m-auto"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
+      </div>
+    </div>
+
+    <div
+      class="toast expireToast align-items-center text-bg-orangeDanger border-0"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      style="position: absolute; top: 1%; left: 50%; transform: translate(-50%)"
+      id="toastExpiredItem"
+    >
+      <div class="d-flex align-items-center">
+        <div class="toast-body mx-auto text-white h5 my-1">
+          Item is Expired !
+        </div>
+        <button
+          type="button"
+          class="btn-close btn-close-white me-2 m-auto"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
+      </div>
+    </div>
+
+    <script src="./js/bootstrap.bundle.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
 </html>
