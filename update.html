@@ -1,11 +1,659 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MOS-BURGERS EDIT</title>
+    <link rel="stylesheet" href="./Styles/main.css" />
+  </head>
+
+  <body onload="loadItemsToDatabase(); loadCustomersToDatabase()">
+    <div class="section mx-0 px-0 overflow-hidden" id="UPDATE">
+      <div class="row">
+        <!-- START-PANE -->
+        <div
+          class="col-sm-1 col-xs-2 bg-black px-0 mx-0 pb-4 overflow-hidden min-vh-100 d-flex flex-column align-items-center"
+        >
+          <div
+            class="mx-auto text-primary fw-bold text-center ps-2 my-5 d-flex flex-column align-items-center"
+            style="max-width: 100%"
+          >
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                M
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                O
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                S
+              </h2>
+            </div>
+            <div class="col" style="height: 25px"></div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                B
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                U
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                R
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                G
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                E
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                R
+              </h2>
+            </div>
+            <div class="col">
+              <h2
+                style="
+                  font-family: 'Courier New', Courier, monospace;
+                  font-weight: 900;
+                "
+              >
+                S
+              </h2>
+            </div>
+          </div>
+
+          <div
+            class="container px-0 mx-0 d-flex flex-column align-items-center"
+          >
+            <div class="row-cols-1">
+              <div
+                class="container mb-5 px-1 ms-1"
+                style="max-width: 90px; box-sizing: border-box"
+              >
+                <a href="./index.html"
+                  ><img
+                    src="img/Menu.png"
+                    alt=""
+                    style="max-width: 100%"
+                    class="p-2"
+                /></a>
+              </div>
+
+              <div
+                class="container px-1 ms-1"
+                style="max-width: 90px; box-sizing: border-box"
+              >
+                <a href="./report.html"
+                  ><img
+                    src="img/Report.png"
+                    alt=""
+                    style="max-width: 100%"
+                    class="p-2"
+                /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ITEM-DATABASE-PANE -->
+        <div
+          class="col-md-5 col-sm-11 col-xs-10 min-vh-100 px-0 overflow-hidden"
+          style="background-image: url(img/blackImg.jpg)"
+        >
+          <div class="row mt-md-5 mx-md-5 text-center mb-1">
+            <h1
+              class="text-orange300 bg-orangeSecondary py-2 rounded-3 border border-orange200 text-nowrap text-truncate"
+              style="
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: 600;
+              "
+            >
+              PRODUCT MANAGEMENT
+            </h1>
+          </div>
+          <div
+            class="d-flex justify-content-between my-3 mx-md-5 mx-sm-3 mx-xs-5"
+          >
+            <h4 class="text-orangeMain fw-bold mx-3 my-auto">ITEM DATABASE</h4>
+            <button
+              type="button"
+              class="btn btn-orangeMain mx-5 text-white fw-bolder rounded-pill px-3"
+              onclick="addItemsWindowOpen()"
+            >
+              +
+            </button>
+          </div>
+          <div
+            class="row my-3 mx-md-5 mx-sm-3 mx-xs-5 overflow-scroll"
+            style="max-height: 517px; min-height: 517px"
+          >
+            <ul class="list-unstyled ms-sm-4 mt-sm-4 text-white" id="itemDatabase"></ul>
+          </div>
+          <div class="bg-black mt-5 pb-5"></div>
+        </div>
+
+        <!-- CUSTOMER-DATABASE-PANE -->
+        <div
+          class="col-md-6 col-xs-12 min-vh-100 px-0 overflow-hidden"
+          style="background-image: url(img/blackImg.jpg)"
+        >
+          <div class="row mt-md-5 mx-md-5 text-center mb-1">
+            <h1
+              class="text-orangeMain bg-orange200 py-2 rounded-3 border border-orange300 text-nowrap text-truncate"
+              style="
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: 600;
+              "
+            >
+              CUSTOMER MANAGEMENT
+            </h1>
+          </div>
+          <div
+            class="d-flex justify-content-between my-3 mx-md-5 mx-sm-3 mx-xs-5"
+          >
+            <h4 class="text-orangeDanger fw-bold mx-3 my-auto ">
+              CUSTOMER DATABASE
+            </h4>
+            <button
+              type="button"
+              class="btn btn-orangeDanger mx-5 text-white fw-bolder rounded-pill px-3"
+              onclick="addCustomersWindowOpen()"
+            >
+              +
+            </button>
+          </div>
+          <div
+            class="row my-3 mx-md-5 mx-sm-3 mx-xs-5 overflow-scroll"
+            style="max-height: 517px; min-height: 517px"
+          >
+            <ul
+              class="list-unstyled ms-sm-4 mt-sm-4 text-white"
+              id="customerDatabase"
+            ></ul>
+          </div>
+          <div class="bg-black mt-5 pb-5"></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="addItems-container">
+      <section class="addItems">
+        <button class="close-btn" id="close" onclick="addItemsWindowClose()">
+          x
+        </button>
+        <div class="addItems-content">
+          <h1
+            class="text-orangeMain text-center"
+            style="
+              font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+                sans-serif;
+            "
+          >
+            ADD ITEMS
+          </h1>
+          <form class="addItems-form" id="addItems-form">
+            <div>
+              <label for="setCategory">Category : </label>
+              <select class="" id="addItemCategory" required="">
+                <option value="0">Burgers</option>
+                <option value="1">Submarines</option>
+                <option value="2">Fries</option>
+                <option value="3">Pasta</option>
+                <option value="4">Chicken</option>
+                <option value="5">Beverages</option>
+              </select>
+            </div>
+            <div>
+              <label for="setItemCode">Code : </label>
+              <input
+                type="text"
+                id="addItemCode"
+                placeholder="Enter Code"
+                class="form-input"
+                pattern="B\d{4}"
+                title="Code must start with 'B' followed by 4 digits."
+                required
+              />
+            </div>
+            <div>
+              <label for="setItemName">Name : </label>
+              <input
+                type="text"
+                id="addItemName"
+                placeholder="Enter Name"
+                class="form-input"
+                required
+              />
+            </div>
+            <div>
+              <label for="setItemPrice">Price : </label>
+              <input
+                type="number"
+                id="addItemPrice"
+                placeholder="Enter Price"
+                class="form-input"
+                min="0"
+                required
+              />
+            </div>
+            <div>
+              <label for="setItemDicount">Discount(%) : </label>
+              <input
+                type="number"
+                id="addItemDiscount"
+                placeholder="Enter Discount(%)"
+                class="form-input"
+                value="0"
+                min="0"
+                max="100"
+              />
+            </div>
+            <div>
+              <label for="setItemEXP">EXP Date : </label>
+              <input type="date" id="addItemEXP" class="form-input" />
+            </div>
+
+            <div class="text-center mb-0">
+              <input
+                type="submit"
+                value="Add"
+                class="submit-btn"
+                id="addItemsSubmit"
+                onclick="addItems()"
+              />
+            </div>
+          </form>
+        </div>
+      </section>
+    </section>
+
+    <section class="editItems-container">
+      <section class="editItems">
+        <button class="close-btn" id="close" onclick="editItemsWindowClose()">
+          x
+        </button>
+        <div class="editItems-content">
+          <h1
+            class="text-orangeMain text-center"
+            style="
+              font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+                sans-serif;
+            "
+          >
+            EDIT ITEM
+          </h1>
+          <form class="editItems-form" id="editItems-form">
+            <div>
+              <label for="setCategory">Category : </label>
+              <select class="" id="category" disabled>
+                <option id="editItemCategory"></option>
+              </select>
+            </div>
+            <div>
+              <label for="setItemCode">Code : </label>
+              <input
+                type="text"
+                id="editItemCode"
+                placeholder="Enter Code"
+                class="form-input"
+                disabled
+              />
+            </div>
+            <div>
+              <label for="setItemName">Name : </label>
+              <input
+                type="text"
+                id="editItemName"
+                placeholder="Enter Name"
+                class="form-input"
+                required
+              />
+            </div>
+            <div>
+              <label for="setItemPrice">Price : </label>
+              <input
+                type="number"
+                id="editItemPrice"
+                placeholder="Enter Price"
+                class="form-input"
+                min="0"
+                required
+              />
+            </div>
+            <div>
+              <label for="setItemDicount">Discount(%) : </label>
+              <input
+                type="number"
+                id="editItemDiscount"
+                placeholder="Enter Discount(%)"
+                class="form-input"
+                min="0"
+                max="100"
+              />
+            </div>
+            <div>
+              <label for="setItemEXP">EXP Date : </label>
+              <input type="date" id="editItemEXP" class="form-input" />
+            </div>
+            <div class="text-center mb-0">
+              <input
+                type="submit"
+                value="Update"
+                class="submit-btn"
+                id="editItemsSubmit"
+                onclick="updateItem()"
+              />
+            </div>
+          </form>
+        </div>
+      </section>
+    </section>
+
+    <section class="addCustomers-container">
+      <section class="addCustomers">
+        <button
+          class="close-btn"
+          id="close"
+          onclick="addCustomersWindowClose()"
+        >
+          x
+        </button>
+        <div class="addCustomers-content">
+          <h1
+            class="text-orangeMain text-center"
+            style="
+              font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+                sans-serif;
+            "
+          >
+            ADD CUSTOMERS
+          </h1>
+          <form class="addCustomers-form" id="addCustomers-form">
+            <div>
+              <label for="setCustomerCode">Code : </label>
+              <input
+                type="text"
+                id="addCustomerCode"
+                placeholder="Enter Code"
+                class="form-input"
+                pattern="C\d{4}"
+                title="Code must start with 'C' followed by 4 digits."
+                required
+              />
+            </div>
+            <div>
+              <label for="setCustomerName">Name : </label>
+              <input
+                type="text"
+                id="addCustomerName"
+                placeholder="Enter Name"
+                class="form-input"
+                required
+              />
+            </div>
+            <div>
+              <label for="setCustomerTP">Telephone Number : </label>
+              <input
+                type="text"
+                id="addCustomerTel"
+                placeholder="123-456789"
+                class="form-input"
+                pattern="^(\d{10}|\d{3}-\d{7})$"
+                title="Enter a valid phone number."
+                required
+              />
+            </div>
+            <div>
+              <label for="setCustomerEmail">Email : </label>
+              <input
+                type="email"
+                id="addCustomerEmail"
+                placeholder="someone@example.com"
+                class="form-input"
+                required
+              />
+            </div>
+            <div class="text-center mb-0">
+              <input
+                type="submit"
+                value="Add"
+                class="submit-btn"
+                id="addCustomersSubmit"
+                onclick="addCustomers()"
+              />
+            </div>
+          </form>
+        </div>
+      </section>
+    </section>
+
+    <section class="editCustomers-container">
+      <section class="editCustomers">
+        <button
+          class="close-btn"
+          id="close"
+          onclick="editCustomersWindowClose()"
+        >
+          x
+        </button>
+        <div class="editCustomers-content">
+          <h1
+            class="text-orangeMain text-center"
+            style="
+              font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+                sans-serif;
+            "
+          >
+            EDIT CUSTOMERS
+          </h1>
+          <form class="editCustomers-form" id="editCustomers-form">
+            <div>
+              <label for="editCustomerCode">Code : </label>
+              <input
+                type="text"
+                id="editCustomerCode"
+                placeholder="Enter Code"
+                class="form-input"
+                pattern="C\d{4}"
+                title="Code must start with 'C' followed by 4 digits."
+                disabled
+              />
+            </div>
+            <div>
+              <label for="editCustomerName">Name : </label>
+              <input
+                type="text"
+                id="editCustomerName"
+                placeholder="Enter Name"
+                class="form-input"
+                required
+              />
+            </div>
+            <div>
+              <label for="editCustomerTel">Telephone Number : </label>
+              <input
+                type="text"
+                id="editCustomerTel"
+                placeholder="123-456789"
+                class="form-input"
+                pattern="^(\d{10}|\d{3}-\d{7})$"
+                title="Enter a valid phone number."
+                required
+              />
+            </div>
+            <div>
+              <label for="editCustomerEmail">Email : </label>
+              <input
+                type="email"
+                id="editCustomerEmail"
+                placeholder="someone@example.com"
+                class="form-input"
+                required
+              />
+            </div>
+            <div class="text-center mb-0">
+              <input
+                type="submit"
+                value="Update"
+                class="submit-btn"
+                id="editCustomersSubmit"
+                onclick="updateCustomer()"
+              />
+            </div>
+          </form>
+        </div>
+      </section>
+    </section>
+
+    <section class="deleteConfirmationItems-container">
+      <section class="deleteConfirmationItems">
+        <div class="deleteConfirmationItems-content">
+          <h4
+            style="
+              font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+                sans-serif;
+              text-align: center;
+            "
+          >
+            Are you sure you want to delete the selected item?<br />
+            This cannot be undone.
+          </h4>
+
+          <div class="text-center mt-4 mx-auto">
+            <button
+              type="button"
+              class="btn text-white btn-orangeDanger fw-bold rounded-pill px-5 py-2 mx-2"
+              onclick="deleteItems()"
+            >
+              Delete
+            </button>
+            <button
+              type="button"
+              class="btn cancel-btn rounded-pill px-5 py-2 mx-2"
+              onclick="deleteConfirmationItemsWindowClose()"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="deleteConfirmationCustomers-container">
+      <section class="deleteConfirmationCustomers">
+        <div class="deleteConfirmationCustomers-content">
+          <h4
+            style="
+              font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+                sans-serif;
+              text-align: center;
+            "
+          >
+            Are you sure you want to delete the selected customer?<br />
+            This cannot be undone.
+          </h4>
+
+          <div class="text-center mt-4 mx-auto">
+            <button
+              type="button"
+              class="btn text-white btn-orangeDanger fw-bold rounded-pill px-5 py-2 mx-2"
+              onclick="deleteCustomers()"
+            >
+              Delete
+            </button>
+            <button
+              type="button"
+              class="btn cancel-btn rounded-pill px-5 py-2 mx-2"
+              onclick="deleteConfirmationCustomersWindowClose()"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <div
+      class="toast align-items-center text-bg-orangeDanger border-0 invalidToast"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      style="position: absolute; top: 1%; left: 50%; transform: translate(-50%)"
+      id="liveToast"
+    >
+      <div class="d-flex align-items-center">
+        <div class="toast-body mx-auto text-white h5 my-1">
+          The item/user is already in the database
+        </div>
+        <button
+          type="button"
+          class="btn-close btn-close-white me-2 m-auto"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
+      </div>
+    </div>
+
+    <script src="./js/bootstrap.bundle.js"></script>
+    <script src="js/app.js"></script>
+  </body>
 </html>
