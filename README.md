@@ -10,27 +10,27 @@
 
 <h2>Project Screenshots:</h2>
 
-<img src="https://i.postimg.cc/4dHqVHgy/Screenshot-222.png" alt="project-screenshot" width="400" height="400/">
+<img src="https://i.postimg.cc/4dHqVHgy/Screenshot-222.png" alt="project-screenshot" width="600" height="400/">
 
-<img src="https://i.postimg.cc/ryW7p4jY/Screenshot-224.png" alt="project-screenshot" width="400" height="400/">
+<img src="https://i.postimg.cc/ryW7p4jY/Screenshot-224.png" alt="project-screenshot" width="600" height="400/">
 
-<img src="https://i.postimg.cc/gkWQL0Bc/Screenshot-225.png" alt="project-screenshot" width="400" height="400/">
+<img src="https://i.postimg.cc/gkWQL0Bc/Screenshot-225.png" alt="project-screenshot" width="600" height="400/">
 
-<img src="https://i.postimg.cc/rwyHgPkv/Screenshot-226.png" alt="project-screenshot" width="400" height="400/">
+<img src="https://i.postimg.cc/rwyHgPkv/Screenshot-226.png" alt="project-screenshot" width="600" height="400/">
 
-<img src="https://i.postimg.cc/nrtRmd2S/Screenshot-227.png" alt="project-screenshot" width="400" height="400/">
+<img src="https://i.postimg.cc/nrtRmd2S/Screenshot-227.png" alt="project-screenshot" width="600" height="400/">
 
-<img src="https://i.postimg.cc/W4FXHRff/Screenshot-228.png" alt="project-screenshot" width="400" height="400/">
+<img src="https://i.postimg.cc/W4FXHRff/Screenshot-228.png" alt="project-screenshot" width="600" height="400/">
 
-<img src="https://i.postimg.cc/xdwtrswj/Screenshot-229.png" alt="project-screenshot" width="400" height="400/">
+<img src="https://i.postimg.cc/xdwtrswj/Screenshot-229.png" alt="project-screenshot" width="600" height="400/">
 
-<img src="https://i.postimg.cc/wvDF9XzX/Screenshot-230.png" alt="project-screenshot" width="400" height="400/">
+<img src="https://i.postimg.cc/wvDF9XzX/Screenshot-230.png" alt="project-screenshot" width="600" height="400/">
 
-<img src="https://i.postimg.cc/x8RRz9cq/Screenshot-231.png" alt="project-screenshot" width="400" height="400/">
+<img src="https://i.postimg.cc/x8RRz9cq/Screenshot-231.png" alt="project-screenshot" width="600" height="400/">
 
-<img src="https://i.postimg.cc/mrytRkqc/Screenshot-232.png" alt="project-screenshot" width="400" height="400/">
+<img src="https://i.postimg.cc/mrytRkqc/Screenshot-232.png" alt="project-screenshot" width="600" height="400/">
 
-<img src="https://i.postimg.cc/C5XKJqZ2/Screenshot-233.png" alt="project-screenshot" width="400" height="400/">
+<img src="https://i.postimg.cc/C5XKJqZ2/Screenshot-233.png" alt="project-screenshot" width="600" height="400/">
 
   
   
